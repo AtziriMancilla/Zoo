@@ -71,8 +71,10 @@ public class Zoo {
     public void showGuides(){
         if(guides.isEmpty()) System.out.println("No hay guias registrados");
         else {
+            int i=1;
             for (Guide guide : guides) {
-                System.out.println(guide.showGuide());
+                System.out.println(i+") "+guide.showGuide());
+                i++;
             }
         }
     }
@@ -80,8 +82,10 @@ public class Zoo {
     public void showVets(){
         if(vets.isEmpty()) System.out.println("No hay veterinarios registrados");
         else {
+            int i=1;
             for (Vet vet : vets) {
-                System.out.println(vet.showVet());
+                System.out.println(i+") "+vet.showVet());
+                i++;
             }
         }
     }
@@ -89,8 +93,10 @@ public class Zoo {
     public void showManagements(){
         if(managements.isEmpty()) System.out.println("No hay administradores registrados");
         else {
+            int i=1;
             for (Management management : managements) {
-                System.out.println(management.showManagement());
+                System.out.println(i+") "+management.showManagement());
+                i++;
             }
         }
     }
@@ -98,8 +104,10 @@ public class Zoo {
     public void showMaintenances(){
         if(maintenances.isEmpty()) System.out.println("No hay empleados de mantenimiento registrados");
         else {
+            int i=1;
             for (Maintenance maintenance : maintenances) {
-                System.out.println(maintenance.showMaintenance());
+                System.out.println(i+") "+maintenance.showMaintenance());
+                i++;
             }
         }
     }

@@ -1,11 +1,11 @@
 public class Care {
-    private String employeeInCharge;
+    private Maintenance employeeInCharge;
     private String processRealized;
     private long idAnimal;
     private Date processDate;
     private String observations; //Obs son opcionales. como no se puede modificar el usuario va a poder no ingresar nada al momento de crear el objeto
 
-    public Care(String employeeInCharge, String processRealized, long idAnimal, Date processDate, String observations) {
+    public Care(Maintenance employeeInCharge, String processRealized, long idAnimal, Date processDate, String observations) {
         this.employeeInCharge = employeeInCharge;
         this.processRealized = processRealized;
         this.idAnimal = idAnimal;
@@ -13,7 +13,7 @@ public class Care {
         this.observations = observations;
     }
 
-    public String getEmployeeInCharge() {
+    public Maintenance getEmployeeInCharge() {
         return employeeInCharge;
     }
 

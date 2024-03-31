@@ -77,6 +77,6 @@ public class Visit {
     }
     public void showVisit (){
         System.out.println("Guía: "+getGuide()+"\nVisitantes: "+getVisitors()+"\n Total cost: "+getTotalCost()+
-                "\n Cantidad de niños: "+getKidsQuanty()+"\nCantidad adultos"+getAdultsQuanty()+"\nFecha de visita: "+getVisitDate());
+                "\n Cantidad de niños: "+getKidsQuanty()+"\nCantidad adultos :"+getAdultsQuanty()+"\nFecha de visita: "+getVisitDate());
     }
 }

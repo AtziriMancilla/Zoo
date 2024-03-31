@@ -18,7 +18,9 @@ public class Zoo{
         String name=sc.nextLine();
         System.out.println("Ingrese el apellido: ");
         String lastName=sc.nextLine();
+        System.out.println("Fecha de Nacimiento");
         Date date=registerDate();
+        System.out.println("Fecha de contratación");
         Date hireDate = registerDate(); //sorry se me pasó la fecha de contratación :(
         if(date!=null&&hireDate!=null) {
             System.out.println("Ingrese la curp");
@@ -174,8 +176,7 @@ public class Zoo{
         Date birthDate=registerDate();
         if (birthDate==null){
             System.out.println("Fecha de nacimiento no válida");
-            return;
-        }
+            return;}
         System.out.println("Ingrese la curp");
         String curp=sc.next();  //hacemos método para validar curp??
 
@@ -280,44 +281,6 @@ public class Zoo{
         animals.add(newAnimal);
     }
     //Añade los cuidados realizados
-    /*public void addCare(){
-        boolean revDate = false;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Registra la fecha de cuidados:");
-        do{
-            Date date=registerDate();
-            if(registerDate()==null)
-                System.out.println("Error. La fecha ingresada no es válida.\n");
-            else{
-                Date processDate = date;
-                System.out.println("Selecciona el empleado:\n");
-                showMaintenances();
-                System.out.print("\nRespuesta: ");
-                int res = sc.nextInt();
-                sc.nextLine();
-                res -= 1;
-                Maintenance employeeInCharge = maintenances.get(res);
-                System.out.println("Selecciona el animal:\n");
-                int x = 1;
-                for(Animals animal:animals){
-                    System.out.printf("\n%d) Animal: %s",x,animal.getType());
-                    x+=1;
-                }
-                System.out.print("\nRespuesta: ");
-                int an=sc.nextInt();
-                sc.nextLine();
-                an-=1;
-                Animals animal = animals.get(an);
-                long idAnimal = animal.getId();
-                System.out.print("\nEsribe el proceso realizado: ");
-                String processRealized = sc.nextLine();
-                System.out.print("\nAnota las observaciones: ");
-                String observations = sc.nextLine();
-                Care care = new Care(employeeInCharge,processRealized,idAnimal,processDate,observations);
-                cares.add(care);
-            }
-        }while (revDate);
-    }*/
     public void addCare(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Seleccionaste añadir cuidado/mantenimiento \n" +

@@ -1,14 +1,14 @@
 public class Care {
     private Maintenance employeeInCharge;
     private String processRealized;
-    private int idAnimal;
+    private int id;
     private Date processDate;
     private String observations; //Obs son opcionales. como no se puede modificar el usuario va a poder no ingresar nada al momento de crear el objeto
 
-    public Care(Maintenance employeeInCharge, String processRealized, int idAnimal, Date processDate, String observations) {
+    public Care(Maintenance employeeInCharge, String processRealized, int id, Date processDate, String observations) {
         this.employeeInCharge = employeeInCharge;
         this.processRealized = processRealized;
-        this.idAnimal = idAnimal;
+        this.id = id;
         this.processDate = processDate;
         this.observations = observations;
     }
@@ -21,8 +21,8 @@ public class Care {
         return processRealized;
     }
 
-    public int getIdAnimal() {
-        return idAnimal;
+    public int getId() {
+        return id;
     }
 
     public Date getProcessDate() {
@@ -33,9 +33,13 @@ public class Care {
         return observations;
     }
 
-    public void showCare(){
-        System.out.println("Empleado a cargo: "+getEmployeeInCharge()+"\nProceso: "+getProcessRealized()+
-                "\nID Animal: "+getIdAnimal()+"\nFecha Proceso: "+processDate+"\nObservaciones: "+observations);
+    public void showCare() {
+        System.out.println("Empleado a cargo: " + getEmployeeInCharge() +
+                "\nProceso: " + processRealized +"\n"+
+                "ID Animal: " + getId() +
+                "\nFecha Proceso: " + getProcessDate() +
+                "\nObservaciones: " + getObservations());
         System.out.println("......................................");
     }
+
 }

@@ -1,7 +1,10 @@
 
 import java.util.ArrayList;
 public class Animals {
-    private long id;
+    //private long id;
+    //Andy: Quiero hacer mejor un id que empiece en 0 para que no haya problema con la verificación
+    private static int cantAnimal=0;
+    int id;
     private String type;
     private Date arrivalDate;
     private ArrayList<String> listDiseases = new ArrayList<>();
@@ -11,8 +14,9 @@ public class Animals {
     private int feedingFrequency;
     private boolean isVaccinated;
 
-    public Animals(long id, String type, Date arrivalDate, String diet, Date birthDate, double weight, int feedingFrequency, boolean isVaccinated) {
-        this.id = id;
+    public Animals(String type, Date arrivalDate, String diet, Date birthDate, double weight, int feedingFrequency, boolean isVaccinated) {
+        //this.id = id;
+        id = Animals.cantAnimal++;
         this.type = type;
         this.arrivalDate = arrivalDate;
         this.diet = diet;

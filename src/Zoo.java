@@ -199,6 +199,55 @@ public class Zoo {
             }
         }while (revDate);
     }
+    //Add animal
+    public void addAnimal(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese tipo de animal: ");
+        String typeAnimal = sc.nextLine();
+        System.out.println("Fecha de llegada");
+        System.out.println("Ingrese día: ");
+        int rday= sc.nextInt();
+        System.out.println("Ingrese mes (1-12) : ");
+        int rmonth = sc.nextInt();
+        System.out.println("Ingrese año(AAAA): ");
+        int ryear = sc.nextInt();
+        if (validateDate(rday, rmonth, ryear)==false){
+            System.out.println("Fecha inválida");
+            return;
+        }
+        Date arrivalDate = new Date(rday, rmonth, ryear);
+
+        System.out.println("Ingrese tipo de dieta: ");
+        String diet = sc.nextLine();
+        System.out.println("Fecha Nacimiento");
+        System.out.println("Ingrese día: ");
+        int bday= sc.nextInt();
+        System.out.println("Ingrese mes (1-12) : ");
+        int bmonth = sc.nextInt();
+        System.out.println("Ingrese año(AAAA): ");
+        int byear = sc.nextInt();
+        if (validateDate(rday, rmonth, ryear)==false){
+            System.out.println("Fecha inválida");
+            return;
+        }
+        Date birthDate = new Date(rday, rmonth, ryear);
+        System.out.println("Ingrese peso (kg) : ");
+        double weight = sc.nextDouble();
+        System.out.println("Veces que se alimenta por semana: ");
+        int feedingFrequency = sc.nextInt();
+        System.out.println("¿Tiene sus vacunas?\n 1) Si 2) No");
+        int vaccinated = sc.nextInt();
+        boolean isVaccinated;
+        if (vaccinated==1){isVaccinated=true;}
+            else if (vaccinated==2) {isVaccinated=false;}
+                else{
+            System.out.println("No es una entrada válida");
+            return;
+                }
+             //crear objeto y añadirlo a la lista
+        Animals newAnimal = new Animals(typeAnimal, arrivalDate, diet, birthDate,weight,feedingFrequency,isVaccinated );
+        animals.add(newAnimal);
+    }
     //Añade los cuidados realizados
     public void addCare(){
         boolean revDate = false;
@@ -279,6 +328,18 @@ public class Zoo {
             Maintenance employee = care.getEmployeeInCharge();
 
         }
+    }
+    public void Tester(){
+        Date birthDateAlex = new Date(4,2,2003);
+        Date birthDateAtziri = new Date(5, 6, 1996);
+        Date birthDateJafet = new Date (30, 1, 1997);
+        Guide guide1 = new Guide("Alejandro", "Montejano", birthDateAlex, "MODA030204LMN01", "MODA83726", 2000);
+        Guide guide2 = new Guide("Jafet", "Santoyo", birthDateJafet, "SABE970130LJBSA01", "SABJ87657", 2000);
+        Guide guide3 = new Guide("Atziri", "Mancilla", birthDateAtziri, "MACA05061997LMN12", "MACA0506199710", 2001);
+        guides.add(guide1);
+        guides.add(guide2);
+        guides.add(guide3);
+
     }
 }
 

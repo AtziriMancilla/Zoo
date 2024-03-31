@@ -367,6 +367,55 @@ public class Zoo{
             default -> System.out.println("Entrada no válida");
 
         }
+
+    }
+    //Borrar empleados
+    public void deleteEmployee(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Qué tipo de empleado desea eliminar? \n1. Guia\n2. Veterinario\n3. Mantenimiento\n4. Administracion\n 0. Salir");
+        int selection = sc.nextInt();
+        switch (selection){
+            case 1->{//mostrar guias
+                showGuides();
+                System.out.println("Selecciona el empleado que desea eliminar");
+                int guideToDelete = sc.nextInt();
+                guideToDelete--;
+                guides.remove(guideToDelete);
+                System.out.println("Empleado eliminado");
+                //segun yo solo se elimina de la lista guias y no afecta el que haya objetos creados con él.
+                //creo que de empleados no se debe eliminar porque borrarlo si afectaria el objeto visita
+            }
+            case 2 ->{//mostrar veterinarios
+                showVets();
+                System.out.println("Selecciona el empleado que desea eliminar");
+                int vetToDelete = sc.nextInt();
+                vetToDelete--;
+                vets.remove(vetToDelete);
+                System.out.println("Empleado eliminado");
+            }
+            case 3 ->{
+                showMaintenances();
+                System.out.println("Selecciona el empleado que desea eliminar");
+                int staffToDelete = sc.nextInt();
+                staffToDelete--;
+                vets.remove(staffToDelete);
+                System.out.println("Empleado eliminado");
+            }
+            case 4 ->{
+                showManagements();
+                System.out.println("Selecciona el em´leado que desea eliminar");
+                int managerToDelete = sc.nextInt();
+                managerToDelete--;
+                vets.remove(managerToDelete);
+                System.out.println("Empleado eliminado");
+            }
+            case 0->{}
+            default -> {
+                System.out.println("Entrada no válida");
+            }
+
+        }
+
     }
     public void deleteAnimal(){
         Scanner sc = new Scanner(System.in);

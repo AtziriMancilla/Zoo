@@ -211,8 +211,7 @@ public class Zoo{
         System.out.print("\nIngresa el numero: ");
         int res = sc.nextInt();
         sc.nextLine();
-        res -= 1;
-        Guide guide = guides.get(res);
+        Guide guide = guides.get(res-1);
         System.out.println("Registra la fecha de la visita:\n");
         do{
             Date date=registerDate();

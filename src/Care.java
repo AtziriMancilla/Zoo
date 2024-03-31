@@ -32,4 +32,10 @@ public class Care {
     public String getObservations() {
         return observations;
     }
+
+    public void showCare(){
+        System.out.println("Empleado a cargo: "+getEmployeeInCharge()+"\nProceso: "+getProcessRealized()+
+                "\nID Animal: "+getIdAnimal()+"\nFecha Proceso: "+processDate+"\nObservaciones: "+observations);
+        System.out.println("......................................");
+    }
 }

@@ -488,17 +488,24 @@ public class Zoo{
         if (visits.isEmpty()) {
             System.out.println("No hay visitas para mostrar");
         } else {
+            int i=1;
             for (Visit visit : visits) {
-                visit.showVisit();
+                System.out.print(i+" ");visit.showVisit();
+                i++;
             }
         }
     }
 
     public void showCareList () {
-        for (Care care : cares) {
-            System.out.println("\n\tCuidados:");
-            Maintenance employee = care.getEmployeeInCharge();
+        if(cares.isEmpty()){
+            System.out.println("No hay registros");
+        }
+        else {
+            for (Care care : cares) {
+                System.out.println(">>>Lista de Cuidados<<<");
+                care.showCare();
 
+            }
         }
     }
 

@@ -33,6 +33,7 @@ public class Date {
     public void setYear(int year) {
         this.year = year;
     }
+    //modifica la fecha actual y valida los datos
     public void modifyDate(){
         Scanner sc=new Scanner(System.in);
         System.out.println("Ingrese la fecha de Nacimiento: ");

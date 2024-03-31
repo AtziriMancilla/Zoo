@@ -38,16 +38,7 @@ public class Visitor extends Person{
                 setLastname(newLastname);
             }
             case 3 -> {
-                System.out.println("Ingrese la fecha de Nacimiento: ");
-                System.out.println("Año: ");
-                int newYear = sc.nextInt();
-                System.out.println("Mes: ");
-                int newMonth = sc.nextInt();
-                System.out.println("Dia: ");
-                int newDay = sc.nextInt();
-
-                Date newDate = new Date(newDay, newMonth, newYear);
-                setBirthDate(newDate);
+                getBirthDate().modifyDate();
             }
             case 4 -> {
                 System.out.println("Ingrese CURP");

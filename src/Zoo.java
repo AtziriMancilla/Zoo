@@ -233,7 +233,9 @@ public class Zoo {
         for(Care care:cares){
             System.out.println("\n\tCuidados:");
             Maintenance employee = care.getEmployeeInCharge();
-                        
+
         }
     }
 }
+
+    }

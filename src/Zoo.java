@@ -236,7 +236,7 @@ public class Zoo{
         int rmonth = sc.nextInt();
         System.out.println("Ingrese año(AAAA): ");
         int ryear = sc.nextInt();
-        if (validateDate(rday, rmonth, ryear)==false){
+        if (!validateDate(rday, rmonth, ryear)){
             System.out.println("Fecha inválida");
             return;
         }
@@ -251,7 +251,7 @@ public class Zoo{
         int bmonth = sc.nextInt();
         System.out.println("Ingrese año(AAAA): ");
         int byear = sc.nextInt();
-        if (validateDate(rday, rmonth, ryear)==false){
+        if (!validateDate(rday, rmonth, ryear)){
             System.out.println("Fecha inválida");
             return;
         }
@@ -314,11 +314,59 @@ public class Zoo{
     }
     //modificar registrodelAnimal
     public void modifyAnimalRegister() {
-        System.out.println("¿Elija el animal al que desea actualizar su registro");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Elija el animal al que desea actualizar su registro");
         //falta mostrar lista y elija
+        showAnimals();
+        int opcion=sc.nextInt();
+        System.out.println("Has seleccionado: "+ animals.get(opcion-1).showAnimal() );
 
         System.out.println("¿Qué cambio desea realizar?\n1)Registrar Enfermedad\n 2) Actualizar peso\n" +
-                "3)Cambiar tipo de alimentación\n 4)Cambiar frecuencia de alimentación\n 5)Registrar vacunación ");
+                "3)Cambiar tipo de alimentación\n 4)Cambiar frecuencia de alimentación\n 5)Registrar vacunación\n 0) Atrás ");
+         int option = sc.nextInt();
+        switch (option){
+            case 1 -> {
+                System.out.println("Ingrese enfermedad: ");
+                String newDiesease = sc.nextLine();
+                animals.get(opcion-1).addDisease(newDiesease);
+                System.out.println("Enfermedad agregada");
+            }
+            case 2 ->{
+                System.out.println("Ingrese nuevo peso (Kg): ");
+                double newWeight = sc.nextDouble();
+                animals.get(opcion-1).setWeight(newWeight);
+                System.out.println("El nuevo peso de "+animals.get(opcion-1).getType()+" "+animals.get(opcion-1).getId()+ "es: "+animals.get(opcion-1).getWeight()+ "Kg");
+            }
+            case 3 ->{
+                System.out.println("Ingrese nueva dieta: ");
+                String newDiet = sc.nextLine();
+                animals.get(opcion-1).setDiet(newDiet);
+                System.out.println("Dieta actualizada");
+            }
+            case 4 ->{
+                System.out.println("Elegiste cambiar frecuencia de alimentación");
+                System.out.println("Ingrese número de veces por semana: ");
+                int newFrequency = sc.nextInt();
+                animals.get(opcion-1).setFeedingFrequency(newFrequency);
+                System.out.println("Frecuencia actualizada");
+            }
+            case 5 ->{
+                System.out.println("Elegiste actualizar vacunación");
+                System.out.println("¿Tiene todas sus vacunas?\n 1)Si 2) No");
+                int desition = sc.nextInt();
+                        if (desition==1){animals.get(opcion-1).setVaccinated(true);
+                        }
+                            else if (desition==2) {animals.get(opcion-1).setVaccinated(false);
+                            }
+                             else {
+                                System.out.println("Entrada no válida");
+                             }
+            }
+
+            case 0 ->{ }
+            default -> System.out.println("Entrada no válida");
+
+        }
     }
     public void deleteAnimal(){
         Scanner sc = new Scanner(System.in);
@@ -435,6 +483,7 @@ public class Zoo{
         animals.add(animal8);
         animals.add(animal9);
         animals.add(animal10);
+        //cuidados ya está?
     }
     public void modifyEmployee(){
         Scanner sc=new Scanner(System.in);

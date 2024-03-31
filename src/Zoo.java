@@ -18,31 +18,34 @@ public class Zoo{
         System.out.println("Ingrese el apellido: ");
         String lastName=sc.nextLine();
         Date date=registerDate();
-        if(date!=null) {
+        Date hireDate = registerDate(); //sorry se me pasó la fecha de contratación :(
+        if(date!=null&&hireDate!=null) {
             System.out.println("Ingrese la curp");
             String curp = sc.next();
             System.out.println("Ingrese el RFC");
             String rfc = sc.next();
             System.out.println("Ingrese el salario");
             double salary = sc.nextDouble();
+            System.out.println("Ingrese el horario");
+            String schedule = sc.nextLine();
             //asigna el rol al empleado
             System.out.println("Seleccione el tipo de empleado: \n1. Guia\n2. Veterinario\n3. Mantenimiento\n4. Administracion");
             int opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
-                    guides.add(new Guide(name, lastName, date, curp, rfc, salary));
+                    guides.add(new Guide(name, lastName, date, curp, rfc, salary, hireDate, schedule));
                     System.out.println("Guia agregado con exito");
                     break;
                 case 2:
-                    vets.add(new Vet(name,lastName,date,curp,rfc,salary));
+                    vets.add(new Vet(name,lastName,date,curp,rfc,salary, hireDate, schedule));
                     System.out.println("Veterinario agregado con exito");
                     break;
                 case 3:
-                    maintenances.add(new Maintenance(name,lastName,date,curp,rfc,salary));
+                    maintenances.add(new Maintenance(name,lastName,date,curp,rfc,salary, hireDate, schedule));
                     System.out.println("Empleado de mantenimiento agregado con exito");
                     break;
                 case 4:
-                    managements.add(new Management(name,lastName,date,curp,rfc,salary));
+                    managements.add(new Management(name,lastName,date,curp,rfc,salary, hireDate, schedule));
                     System.out.println("Administrador agregado con exito");
                     break;
                 default:
@@ -357,14 +360,52 @@ public class Zoo{
         Date birthDateJafet = new Date (30, 1, 1997);
         Date birthDateAlan = new Date(5, 6, 1996);
         Date registerAlan=new Date(31,3,2024);
-        Guide guide1 = new Guide("Alejandro", "Montejano", birthDateAlex, "MODA030204LMN01", "MODA83726", 2000);
-        Guide guide2 = new Guide("Jafet", "Santoyo", birthDateJafet, "SABE970130LJBSA01", "SABJ87657", 2000);
-        Guide guide3 = new Guide("Atziri", "Mancilla", birthDateAtziri, "MACA05061997LMN12", "MACA0506199710", 2001);
+        Date birthDatePao= new Date(23, 4, 1997);
+        Date registerPao = new Date(30, 03, 2024);
+        Date birthDateMarcos = new Date(15,1, 1990);
+        Date birthDateFany = new Date(7, 6, 2003);
+        Date birthDateRubi = new Date (10, 2, 1996);
+        Date birthDateMore = new Date(25, 8, 2003);
+        Date birthDateEd = new Date(23, 1, 2000);
+        Date registerMarcos=new Date(25, 02, 2014);
+        Date registerFany = new Date(12, 04, 2005);
+        Date registerRubi = new Date(25, 8, 2019);
+        Date registerMore = new Date(26, 8, 2008);
+        Date registerEd = new Date(20, 9, 2019);
+        Date visitDate = new Date(31, 03, 2024);
+        Date hireDategeneral = new Date(2, 1, 2005);
+        String guideSchedule = "Mie-Dom 9-17";
+
+        Guide guide1 = new Guide("Alejandro", "Montejano", birthDateAlex, "MODA030204LMN01", "MODA83726", 2000, hireDategeneral,guideSchedule);
+        Guide guide2 = new Guide("Jafet", "Santoyo", birthDateJafet, "SABE970130LJBSA01", "SABJ87657", 2000, hireDategeneral, guideSchedule);
+        Guide guide3 = new Guide("Atziri", "Mancilla", birthDateAtziri, "MACA05061997LMN12", "MACA0506199710", 2001, hireDategeneral, guideSchedule);
         guides.add(guide1);
         guides.add(guide2);
         guides.add(guide3);
-        visitors.add(new Visitor("Alan","Lopez",birthDateAlan,"LOMA220522HHNOSE",registerAlan));
+        Visitor visitor1 = new Visitor("Alan","Lopez",birthDateAlan,"LOMA220522HHNOSE",registerAlan);
+        Visitor visitor2 = new Visitor("Paola Itzel", "Cobián", birthDatePao, "NECO970423HLOUWU", registerPao );
+        Visitor visitor3= new Visitor("Marcos", "Sánchez", birthDateMarcos, "SAHM9862543HOLI", registerMarcos);
+        Visitor visitor4= new Visitor("Estefanía", "López", birthDateFany, "ESLO982345JAHSBR", registerFany);
+        Visitor visitor5= new Visitor("Rubi", "Martinez", birthDateRubi, "RUBA986543JSHLKL", registerRubi);
+        Visitor visitor6= new Visitor("Morelia", "Durán", birthDateMore, "MODU030825JSHDGET", registerMore);
+        visitors.add(visitor1);
+        visitors.add(visitor2);
+        visitors.add(visitor3);
+        visitors.add(visitor4);
+        visitors.add(visitor5);
+        visitors.add(visitor6);
+        Visit visit1 = new Visit(guide3, visitDate);
+        visit1.addVisitor(visitor1);
+        visit1.addVisitor(visitor2);
+        visit1.addVisitor(visitor3);
+        Visit visit2= new Visit(guide1,visitDate);
+        visit2.addVisitor(visitor4);
+        visit2.addVisitor(visitor5);
+        visit2.addVisitor(visitor6);
+        Date hireDate = new Date(2, 2, 2020);
 
+        Vet vet1 = new Vet("Eduardo", "Martinez",birthDateEd,"MARE8976625LKJ", "JDHSGHKL1625", 2000, hireDate, "L-V 8-4");
+        vets.add(vet1);
     }
     public void modifyEmployee(){
         Scanner sc=new Scanner(System.in);

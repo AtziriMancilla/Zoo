@@ -124,6 +124,50 @@ public class Zoo {
         System.out.println("Administradores: ");
         showManagements();
     }
+    public void addVisitors(){
+        Scanner sc = new Scanner(System.in);
+        //nombre completo
+        System.out.println("Ingrese el nombre: ");
+        String name=sc.nextLine();
+        System.out.println("Ingrese el apellido: ");
+        String lastName=sc.nextLine();
+        if (name.isEmpty()||lastName.isEmpty()){
+            System.out.println("Debe llenar el nombre completo correctamente");
+            return;
+        }
+
+        System.out.println("Ingrese el dia de nacimiento");
+        int day=sc.nextInt();
+        System.out.println("Ingrese el mes de nacimiento");
+        int month=sc.nextInt();
+        System.out.println("Ingrese el año de nacimiento");
+        int year=sc.nextInt();
+        if (validateDate(day, month, year)==false){
+            System.out.println("Fecha inválida");
+            return;
+        }
+        Date birthDate=new Date(day,month,year);
+
+        System.out.println("Ingrese la curp");
+        String curp=sc.next();  //hacemos método para validar curp??
+
+        System.out.println("Fecha de registro del visitante: ");
+        System.out.println("Ingrese día: ");
+        int rday= sc.nextInt();
+        System.out.println("Ingrese mes (1-12) : ");
+        int rmonth = sc.nextInt();
+        System.out.println("Ingrese año(AAAA): ");
+        int ryear = sc.nextInt();
+        if (validateDate(rday, rmonth, ryear)==false){
+            System.out.println("Fecha inválida");
+            return;
+        }
+        Date registerDate = new Date(rday, rmonth, ryear);
+        //se crea el visitante
+        Visitor newVisitor = new Visitor(name, lastName, birthDate, curp, registerDate);
+        //se agrega a la lista
+        visitors.add(newVisitor);
+    }
     //Añade las visitas
     public void addVisit(){
         boolean revDate = false;

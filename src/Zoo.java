@@ -29,8 +29,10 @@ public class Zoo{
             String rfc = sc.next();
             System.out.println("Ingrese el salario");
             double salary = sc.nextDouble();
-            System.out.println("Ingrese el horario");
+            sc.nextLine();
+            System.out.println("Ingrese el horario: ");
             String schedule = sc.nextLine();
+
             //asigna el rol al empleado
             System.out.println("Seleccione el tipo de empleado: \n1. Guia\n2. Veterinario\n3. Mantenimiento\n4. Administracion");
             int opcion = sc.nextInt();
@@ -191,6 +193,7 @@ public class Zoo{
         Visitor newVisitor = new Visitor(name, lastName, birthDate, curp, registerDate);
         //se agrega a la lista
         visitors.add(newVisitor);
+        System.out.println("Visitante creado con éxito");
     }
 
     //Añade las visitas, agrega visitantes y válida si el visitante para que no sea agregado dos veces

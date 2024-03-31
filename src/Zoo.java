@@ -406,6 +406,35 @@ public class Zoo{
 
         Vet vet1 = new Vet("Eduardo", "Martinez",birthDateEd,"MARE8976625LKJ", "JDHSGHKL1625", 2000, hireDate, "L-V 8-4");
         vets.add(vet1);
+        Management manager = new Management("Dr professor", "Alejandro", birthDateAlex, "MODA030204JSHDG", "KDJDHSKL", 3000, hireDate, "L-V 8-4");
+        managements.add(manager);
+        Maintenance maintenance1 = new Maintenance("Juan", "Pérez", birthDateMarcos, "JDHHG09876123", "HDGHAJK1278", 2000, hireDategeneral,"L-V 8-4");
+        Maintenance maintenance2 = new Maintenance("Diana", "Garnica", birthDateFany, "JHGJKLLJJK", "JDHSKLN",2000, hireDategeneral, "M-D 12-8" );
+        maintenances.add(maintenance1);
+        maintenances.add(maintenance2);
+        //ahora animales
+        Date arrivalDate = new Date (2, 6, 2000);
+        Date animalbirthDate = new Date(23, 3, 1990);
+        Animals animal1 =new Animals("Dolphin", arrivalDate, "piscivorous", animalbirthDate,100.5, 7, true );
+        Animals animal2 = new Animals("Capybara", arrivalDate, "grasses, berries, seeds", animalbirthDate, 35, 14, true);
+        Animals animal3 = new Animals("Penguin", arrivalDate, "piscivorous", animalbirthDate, 30, 14, true);
+        Animals animal4 = new Animals("Flamingo", arrivalDate, "crustaceans", animalbirthDate, 3, 7, true);
+        Animals animal5 = new Animals("Elephant", arrivalDate, "grasses, fruit, tree bark, roots", animalbirthDate, 5000, 21, true);
+        Animals animal6 = new Animals("Panda", arrivalDate, "Bambu", animalbirthDate, 80, 14, true);
+        Animals animal7 = new Animals("Red panda", arrivalDate, "Fruits, roots, bambu", animalbirthDate,14, 4, true);
+        Animals animal8 = new Animals("Rattlesnake",arrivalDate, "rats", animalbirthDate, 4, 1,true);
+        Animals animal9 = new Animals("Galapagos giant tortoise", arrivalDate, "fruit, leaves, vegetables", animalbirthDate, 40, 5, true);
+        Animals animal10 = new Animals("White tiger", arrivalDate, "carnivorous", animalbirthDate, 1000, 3, true);
+        animals.add(animal1);
+        animals.add(animal2);
+        animals.add(animal3);
+        animals.add(animal4);
+        animals.add(animal5);
+        animals.add(animal6);
+        animals.add(animal7);
+        animals.add(animal8);
+        animals.add(animal9);
+        animals.add(animal10);
     }
     public void modifyEmployee(){
         Scanner sc=new Scanner(System.in);

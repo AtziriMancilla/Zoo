@@ -295,7 +295,14 @@ public class Zoo {
             }
         }while (revDate);
     }
+    //modificar registrodelAnimal
+    public void modifyAnimalRegister() {
+        System.out.println("¿Elija el animal al que desea actualizar su registro");
+        //falta mostrar lista y elija
 
+        System.out.println("¿Qué cambio desea realizar?\n1)Registrar Enfermedad\n 2) Actualizar peso\n" +
+                "3)Cambiar tipo de alimentación\n 4)Cambiar frecuencia de alimentación\n 5)Registrar vacunación ");
+    }
     public void deleteAnimal(){
         Scanner sc = new Scanner(System.in);
         int x = 1;
@@ -343,4 +350,3 @@ public class Zoo {
     }
 }
 
-    }

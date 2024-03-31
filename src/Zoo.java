@@ -170,39 +170,28 @@ public class Zoo{
             System.out.println("Debe llenar el nombre completo correctamente");
             return;
         }
-
-        System.out.println("Ingrese el dia de nacimiento");
-        int day=sc.nextInt();
-        System.out.println("Ingrese el mes de nacimiento");
-        int month=sc.nextInt();
-        System.out.println("Ingrese el año de nacimiento");
-        int year=sc.nextInt();
-        if (validateDate(day, month, year)==false){
-            System.out.println("Fecha inválida");
+        System.out.println("Registro de fecha nacimiento");
+        Date birthDate=registerDate();
+        if (birthDate==null){
+            System.out.println("Fecha de nacimiento no válida");
             return;
         }
-        Date birthDate=new Date(day,month,year);
-
         System.out.println("Ingrese la curp");
         String curp=sc.next();  //hacemos método para validar curp??
 
         System.out.println("Fecha de registro del visitante: ");
-        System.out.println("Ingrese día: ");
-        int rday= sc.nextInt();
-        System.out.println("Ingrese mes (1-12) : ");
-        int rmonth = sc.nextInt();
-        System.out.println("Ingrese año(AAAA): ");
-        int ryear = sc.nextInt();
-        if (validateDate(rday, rmonth, ryear)==false){
-            System.out.println("Fecha inválida");
+        Date registerDate= registerDate();
+        if (registerDate==null){
+            System.out.println("Fecha de registro no válida");
             return;
         }
-        Date registerDate = new Date(rday, rmonth, ryear);
+
         //se crea el visitante
         Visitor newVisitor = new Visitor(name, lastName, birthDate, curp, registerDate);
         //se agrega a la lista
         visitors.add(newVisitor);
     }
+
     //Añade las visitas, agrega visitantes y válida si el visitante para que no sea agregado dos veces
     public void addVisit(){
         Scanner sc = new Scanner(System.in);
@@ -258,32 +247,21 @@ public class Zoo{
         System.out.println("Ingrese tipo de animal: ");
         String typeAnimal = sc.nextLine();
         System.out.println("Fecha de llegada");
-        System.out.println("Ingrese día: ");//aqui se puede usar register date
-        int rday= sc.nextInt();
-        System.out.println("Ingrese mes (1-12) : ");
-        int rmonth = sc.nextInt();
-        System.out.println("Ingrese año(AAAA): ");
-        int ryear = sc.nextInt();
-        if (!validateDate(rday, rmonth, ryear)){
-            System.out.println("Fecha inválida");
+        Date arrivalDate = registerDate();
+        if(arrivalDate==null){
+            System.out.println("Fecha no válida");
             return;
         }
-        Date arrivalDate = new Date(rday, rmonth, ryear);
 
         System.out.println("Ingrese tipo de dieta: ");
         String diet = sc.nextLine();
         System.out.println("Fecha Nacimiento");
-        System.out.println("Ingrese día: ");//aqui puedes usar registerdate()
-        int bday= sc.nextInt();
-        System.out.println("Ingrese mes (1-12) : ");
-        int bmonth = sc.nextInt();
-        System.out.println("Ingrese año(AAAA): ");
-        int byear = sc.nextInt();
-        if (!validateDate(rday, rmonth, ryear)){
-            System.out.println("Fecha inválida");
+        Date birthDate = registerDate();
+        if(birthDate==null){
+            System.out.println("Fecha no válida");
             return;
         }
-        Date birthDate = new Date(rday, rmonth, ryear);
+
         System.out.println("Ingrese peso (kg) : ");
         double weight = sc.nextDouble();
         System.out.println("Veces que se alimenta por semana: ");
@@ -475,13 +453,13 @@ public class Zoo{
         visitors.remove(visitorToDelete);
     }
 
-    public void showVisits(){
-        for(Visit visit:visits){
-            System.out.println("\n\tVisita:");
-            System.out.printf("Guía: %s",visit.getGuide());
-            System.out.printf("Fecha: %s",visit.getVisitDate());
-            System.out.printf("Costo: %f",visit.getTotalCost());
-            System.out.println("***************");
+    public void showVisits() {
+        if (visits.isEmpty()) {
+            System.out.println("No hay visitas para mostrar");
+        } else {
+            for (Visit visit : visits) {
+                visit.showVisit();
+            }
         }
     }
 

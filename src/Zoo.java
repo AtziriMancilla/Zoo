@@ -460,6 +460,20 @@ public class Zoo{
         animals.remove(res);
         System.out.println("Animal eliminado de la base de datos.");
     }
+    //eliminar visitante
+    public void deleteVisitor(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Seleccione el visitante que desea eliminar: ");
+        showVisitors();
+        int visitorToDelete = sc.nextInt(); //el método showVisitors muestra a partir de 1. fíjate en eso si te causa problema
+        visitorToDelete--;
+        //asegurarse que no haya un objeto visita con un solo visitante
+        //Andy Pregunta:¿Será buena idea que el visitor tenga un arraylist de sus visitas?
+        //no sé como filtrar en lista de visitas
+        //
+        // ya si no rompe relación
+        visitors.remove(visitorToDelete);
+    }
 
     public void showVisits(){
         for(Visit visit:visits){

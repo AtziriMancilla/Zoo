@@ -29,7 +29,7 @@ public class Animals {
         listDiseases.add(newDisease);
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

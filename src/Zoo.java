@@ -280,7 +280,7 @@ public class Zoo{
         animals.add(newAnimal);
     }
     //Añade los cuidados realizados
-    public void addCare(){
+    /*public void addCare(){
         boolean revDate = false;
         Scanner sc = new Scanner(System.in);
         System.out.println("Registra la fecha de cuidados:");
@@ -317,6 +317,37 @@ public class Zoo{
                 cares.add(care);
             }
         }while (revDate);
+    }*/
+    public void addCare(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Seleccionaste añadir cuidado/mantenimiento \n" +
+                "Selecciona el número de empleado a cargo");
+        showMaintenances();
+        int employeeSelected = sc.nextInt();
+        employeeSelected--;
+         Maintenance staff = maintenances.get(employeeSelected);
+         //empleado es el staff
+        System.out.println("Ingrese proceso realizado");
+        String processRealized = sc.nextLine();
+        System.out.println("Selecciona el animal al que realizarás cuidado");
+        showAnimals();
+        int animalselected = sc.nextInt();
+        animalselected--;
+        System.out.println("Seleccionaste "+animals.get(animalselected).showAnimal());
+        int idAnimal = animals.get(animalselected).getId();
+        // fecha del proceso
+        System.out.println("Fecha del proceso: ");
+        Date processDate = registerDate();
+        if(processDate==null){
+            System.out.println("Fecha no válida");
+            return;
+        }
+        System.out.println("Observaciones (opcional)");
+        String observations = sc.nextLine();
+        ///////////Crear obejto
+        Care newCare = new Care(staff, processRealized, idAnimal, processDate, observations);
+
+
     }
     //modificar registrodelAnimal
     public void modifyAnimalRegister() {

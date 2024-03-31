@@ -13,19 +13,27 @@ public class Visit {
         this.visitDate=visitDate;
     }
     public double getTotalCost() {
+
         return totalCost;
     }
     public int getKidsQuanty() {
+
         return kidsQuanty;
     }
     public int getAdultsQuanty() {
+
         return adultsQuanty;
     }
     public Guide getGuide() {
+
         return guide;
     }
     public Date getVisitDate() {
+
         return visitDate;
+    }
+    public ArrayList<Visitor> getVisitors() {
+        return visitors;
     }
     public void addVisitor(Visitor visitor){
         if(visitors.contains(visitor)){

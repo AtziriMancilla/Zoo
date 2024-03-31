@@ -1,3 +1,4 @@
+import java.awt.image.VolatileImage;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -202,34 +203,62 @@ public class Zoo{
         //se agrega a la lista
         visitors.add(newVisitor);
     }
-    //Añade las visitas
+    //Añade las visitas, agrega visitantes y válida si el visitante para que no sea agregado dos veces
     public void addVisit(){
-        boolean revDate = false;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Guias:\n");
+        System.out.println("Guias");
         showGuides();
-        System.out.print("\nIngresa el numero: ");
-        int res = sc.nextInt();
+        System.out.print("Ingrese el numero de guia: ");
+        int opcion = sc.nextInt();
         sc.nextLine();
-        Guide guide = guides.get(res-1);
-        System.out.println("Registra la fecha de la visita:\n");
-        do{
-            Date date=registerDate();
-            if(date==null)
-                System.out.println("Error. La fecha ingresada no es válida.\n");
-            else{
-                Visit visit = new Visit(guide,date);
-                visits.add(visit);
+        Guide guide = guides.get(opcion-1);
+        System.out.println("Ingresa la fecha");
+        Date date=registerDate();
+        if(date==null)
+            System.out.println("Error. La fecha ingresada no es válida.\n");
+        else {
+            boolean band = true;
+            Visit visit = new Visit(guide, date);
+            visits.add(visit);
+            while (band) {
+                System.out.println("Si desea ingresar un visitante ingrese el numero, ingrese 0 para salir");
+                showVisitors();
+                opcion = sc.nextInt();
+                sc.nextLine();
+                if (opcion == 0) {
+                    band = false;
+                }
+                if(opcion > visitors.size()){
+                    System.out.println("Ingrese un numero de visitante valido");
+                }
+                if(opcion>0&&opcion<visitors.size()){
+                    if (validateVisitors(visit,visitors.get(opcion - 1))) {
+                        visit.addVisitor(visitors.get(opcion - 1));
+                        System.out.println("Usuario agregado");
+                    }
+                    else {
+                        System.out.println("El usuario ya está en ésta visita");
+                    }
+                }
             }
-        }while (revDate);
+            System.out.println("Visita creada con éxito");
+        }
     }
+    //válida que el usuario no esté en una visita
+    private static boolean validateVisitors(Visit visit,Visitor visitor){
+        boolean band=true;
+        if(visit.getVisitors().contains(visitor))
+            band=false;
+        return band;
+    }
+
     //Add animal
     public void addAnimal(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese tipo de animal: ");
         String typeAnimal = sc.nextLine();
         System.out.println("Fecha de llegada");
-        System.out.println("Ingrese día: ");
+        System.out.println("Ingrese día: ");//aqui se puede usar register date
         int rday= sc.nextInt();
         System.out.println("Ingrese mes (1-12) : ");
         int rmonth = sc.nextInt();
@@ -244,7 +273,7 @@ public class Zoo{
         System.out.println("Ingrese tipo de dieta: ");
         String diet = sc.nextLine();
         System.out.println("Fecha Nacimiento");
-        System.out.println("Ingrese día: ");
+        System.out.println("Ingrese día: ");//aqui puedes usar registerdate()
         int bday= sc.nextInt();
         System.out.println("Ingrese mes (1-12) : ");
         int bmonth = sc.nextInt();

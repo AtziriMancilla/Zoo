@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Zoo {
+public class Zoo{
     private ArrayList<Guide> guides= new ArrayList<Guide>();
     private ArrayList<Maintenance> maintenances= new ArrayList<Maintenance>();
     private ArrayList<Vet> vets= new ArrayList<Vet>();
@@ -17,14 +17,8 @@ public class Zoo {
         String name=sc.nextLine();
         System.out.println("Ingrese el apellido: ");
         String lastName=sc.nextLine();
-        System.out.println("Ingrese el dia de nacimiento");
-        int day=sc.nextInt();
-        System.out.println("Ingrese el mes de nacimiento");
-        int month=sc.nextInt();
-        System.out.println("Ingrese el año de nacimiento");
-        int year=sc.nextInt();
-        if(validateDate(day,month,year)) {
-            Date date = new Date(day, month, year);
+        Date date=registerDate();
+        if(date!=null) {
             System.out.println("Ingrese la curp");
             String curp = sc.next();
             System.out.println("Ingrese el RFC");
@@ -60,13 +54,28 @@ public class Zoo {
             System.out.println("La fecha no es valida, no se pudo realizar el registro");
         }
     }
+    // Crea una fecha de tipo date pidiendo datos al usuario, y verifica si es valida, en caso contrario regresa null
+    public Date registerDate(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Dia: ");
+        int newDay = sc.nextInt();
+        System.out.println("Mes: ");
+        int newMonth = sc.nextInt();
+        System.out.println("Año: ");
+        int newYear = sc.nextInt();
+        if(validateDate(newDay,newMonth,newYear)) {
+            Date date = new Date(newDay, newMonth, newYear);
+            return date;
+        }
+        return null;
+    }
     private static boolean validateDate(int dayOfMonth,int month,int year){
         Boolean band=true;
         if(dayOfMonth<1||dayOfMonth>31)
             band=false;
         if(month<1||month>12)
             band=false;
-        if(year<1900&&year>2024)
+        if(year<1900||year>2024)
             band=false;
         return band;
     }
@@ -110,6 +119,28 @@ public class Zoo {
             int i=1;
             for (Maintenance maintenance : maintenances) {
                 System.out.println(i+") "+maintenance.showMaintenance());
+                i++;
+            }
+        }
+    }
+    public void showAnimals(){
+        if(animals.isEmpty())
+            System.out.println("No hay animales registrados");
+        else {
+            int i=1;
+            for (Animals animal : animals) {
+                System.out.println(i+") "+animal.showAnimal());
+                i++;
+            }
+        }
+    }
+    public void showVisitors(){
+        if(visitors.isEmpty())
+            System.out.println("No hay visitantes registrados");
+        else {
+            int i=1;
+            for (Visitor visitor : visitors) {
+                System.out.println(i+") "+visitor.showVisitor());
                 i++;
             }
         }
@@ -172,28 +203,19 @@ public class Zoo {
     public void addVisit(){
         boolean revDate = false;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Selecciona el guía:\n");
+        System.out.println("Guias:\n");
         showGuides();
-        System.out.print("\nRespuesta: ");
+        System.out.print("\nIngresa el numero: ");
         int res = sc.nextInt();
         sc.nextLine();
         res -= 1;
         Guide guide = guides.get(res);
         System.out.println("Registra la fecha de la visita:\n");
         do{
-            System.out.print("\nIngresa el día: ");
-            int dayOfMonth = sc.nextInt();
-            sc.nextLine();
-            System.out.print("\nIngresa el mes: ");
-            int month = sc.nextInt();
-            sc.nextLine();
-            System.out.print("\nIngresa el año: ");
-            int year = sc.nextInt();
-            sc.nextLine();
-            revDate = validateDate(dayOfMonth,month,year);
-            if(revDate==false) System.out.println("Error. La fecha ingresada no es válida.\n");
+            Date date=registerDate();
+            if(date==null)
+                System.out.println("Error. La fecha ingresada no es válida.\n");
             else{
-                Date date = new Date(dayOfMonth,month,year);
                 Visit visit = new Visit(guide,date);
                 visits.add(visit);
             }
@@ -254,19 +276,11 @@ public class Zoo {
         Scanner sc = new Scanner(System.in);
         System.out.println("Registra la fecha de cuidados:");
         do{
-            System.out.print("\nIngresa el día: ");
-            int dayOfMonth = sc.nextInt();
-            sc.nextLine();
-            System.out.print("\nIngresa el mes: ");
-            int month = sc.nextInt();
-            sc.nextLine();
-            System.out.print("\nIngresa el año: ");
-            int year = sc.nextInt();
-            sc.nextLine();
-            revDate = validateDate(dayOfMonth,month,year);
-            if(revDate==false) System.out.println("Error. La fecha ingresada no es válida.\n");
+            Date date=registerDate();
+            if(registerDate()==null)
+                System.out.println("Error. La fecha ingresada no es válida.\n");
             else{
-                Date processDate = new Date(dayOfMonth,month,year);
+                Date processDate = date;
                 System.out.println("Selecciona el empleado:\n");
                 showMaintenances();
                 System.out.print("\nRespuesta: ");
@@ -329,24 +343,68 @@ public class Zoo {
         }
     }
 
-    public void showCareList(){
-        for(Care care:cares){
+    public void showCareList () {
+        for (Care care : cares) {
             System.out.println("\n\tCuidados:");
             Maintenance employee = care.getEmployeeInCharge();
 
         }
     }
+
     public void Tester(){
         Date birthDateAlex = new Date(4,2,2003);
         Date birthDateAtziri = new Date(5, 6, 1996);
         Date birthDateJafet = new Date (30, 1, 1997);
+        Date birthDateAlan = new Date(5, 6, 1996);
+        Date registerAlan=new Date(31,3,2024);
         Guide guide1 = new Guide("Alejandro", "Montejano", birthDateAlex, "MODA030204LMN01", "MODA83726", 2000);
         Guide guide2 = new Guide("Jafet", "Santoyo", birthDateJafet, "SABE970130LJBSA01", "SABJ87657", 2000);
         Guide guide3 = new Guide("Atziri", "Mancilla", birthDateAtziri, "MACA05061997LMN12", "MACA0506199710", 2001);
         guides.add(guide1);
         guides.add(guide2);
         guides.add(guide3);
+        visitors.add(new Visitor("Alan","Lopez",birthDateAlan,"LOMA220522HHNOSE",registerAlan));
 
     }
+    public void modifyEmployee(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Seleccione el tipo de empleado: \n1. Guia\n2. Veterinario\n3. Mantenimiento\n4. Administracion");
+        int opcion = sc.nextInt();
+        switch (opcion) {
+            case 1:
+                showGuides();
+                System.out.println("seleccione el numero: ");
+                opcion=sc.nextInt();
+                guides.get(opcion-1).modify();
+                break;
+            case 2:
+                showVets();
+                System.out.println("seleccione el numero: ");
+                opcion=sc.nextInt();
+                vets.get(opcion-1).modify();
+                break;
+            case 3:
+                showMaintenances();
+                System.out.println("seleccione el numero: ");
+                opcion=sc.nextInt();
+                maintenances.get(opcion-1).modify();
+                break;
+            case 4:
+                showManagements();
+                System.out.println("seleccione el numero: ");
+                opcion=sc.nextInt();
+                managements.get(opcion-1).modify();
+                break;
+            default:
+                System.out.println("Opcion no válida");
+                break;
+        }
+    }
+    public void modifyVisitor(){
+        Scanner sc=new Scanner(System.in);
+        showVisitors();
+        System.out.println("Ingrese el numero de visitante:");
+        int opcion=sc.nextInt();
+        visitors.get(opcion-1).modify();
+    }
 }
-

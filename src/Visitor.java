@@ -21,9 +21,11 @@ public class Visitor extends Person{
         return super.showInfo()+" Total visits: "+totalVisits+" Register date: "+registerDate;
 
     }
+    //permite que el usuario modifique los atributos de un visitante
     public void modify(){
         System.out.println("¿Qué aspecto desea modificar? \n1)Nombre \n2) Apellido\n 3)Fecha de Nacimiento\n 4)CURP");
         int selection = sc.nextInt();
+        sc.nextLine();
         switch (selection){
             case 1 -> {
                 System.out.println("Ingrese el Nombre: ");

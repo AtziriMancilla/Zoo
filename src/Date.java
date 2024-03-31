@@ -36,7 +36,7 @@ public class Date {
     //modifica la fecha actual y valida los datos
     public void modifyDate(){
         Scanner sc=new Scanner(System.in);
-        System.out.println("Ingrese la fecha de Nacimiento: ");
+        System.out.println("Ingrese la fecha de Nacimiento");
         System.out.println("Año: ");
         int newYear = sc.nextInt();
         if(newYear>1900&&newYear<2024)

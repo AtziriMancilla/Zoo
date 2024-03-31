@@ -23,6 +23,7 @@ public class Employee extends Person{
         Scanner sc=new Scanner(System.in);
         System.out.println("¿Qué aspecto desea modificar? \n1)Nombre \n2) Apellido\n 3)Fecha de Nacimiento\n 4)CURP\n5) RFC\n6.Salario");
         int selection = sc.nextInt();
+        sc.nextLine();
         switch (selection){
             case 1 -> {
                 System.out.println("Ingrese el Nombre: ");
@@ -45,7 +46,7 @@ public class Employee extends Person{
             }
             case 5 -> {
                 System.out.println("Ingrese el RFC");
-                this.rfc = sc.nextLine();
+                rfc = sc.nextLine();
             }
             case 6 -> {
                 System.out.println("Ingrese el salario");
@@ -54,6 +55,6 @@ public class Employee extends Person{
             default-> System.out.println("Opción no válida");
 
         }
-        System.out.println("Información guardada: "+ showEmployee());
+        System.out.println("Empleado modificado: "+ showEmployee());
     }
 }

@@ -30,6 +30,7 @@ public class Person {
         this.curp = curp;
     }
 
+
     public String showInfo(){
         String date= Integer.toString(birthDate.getDayOfMonth())+"/" +Integer.toString(birthDate.getMonth())+"/"+Integer.toString(birthDate.getYear());
         return String.format("Nombre completo: %s %s, Fecha de nacimiento: %s, CURP: %s", name, lastname,date, curp);

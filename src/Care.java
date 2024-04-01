@@ -34,10 +34,10 @@ public class Care {
     }
 
     public void showCare() {
-        System.out.println("Empleado a cargo: " + getEmployeeInCharge() +
+        System.out.println("Empleado a cargo: " + getEmployeeInCharge().showEmployee() +
                 "\nProceso: " + processRealized +"\n"+
                 "ID Animal: " + getId() +
-                "\nFecha Proceso: " + getProcessDate() +
+                "\nFecha Proceso: " + getProcessDate().showDate() +
                 "\nObservaciones: " + getObservations());
         System.out.println("......................................");
     }

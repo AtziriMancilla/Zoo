@@ -18,6 +18,7 @@ public class Visitor extends Person{
         return registerDate;
     }
 
+
     public void setTotalVisits(int totalVisits) {
         this.totalVisits = totalVisits;
     }

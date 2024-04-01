@@ -6,22 +6,22 @@ public class Visit {
     private ArrayList<Visitor> visitors=new ArrayList<>();
     private double totalCost=cost();
     private int kidsQuanty=kidsQuanty();
-    private int adultsQuanty=adultsQuanty();
+    private int adultsQuanty= calculateAdultsQuanty();
     private Date visitDate;
     public Visit(Guide guide,Date visitDate){
         this.guide=guide;
         this.visitDate=visitDate;
     }
     public double getTotalCost() {
-
+        totalCost=cost();
         return totalCost;
     }
     public int getKidsQuanty() {
-
+        kidsQuanty= kidsQuanty();
         return kidsQuanty;
     }
     public int getAdultsQuanty() {
-
+        adultsQuanty= calculateAdultsQuanty();
         return adultsQuanty;
     }
     public Guide getGuide() {
@@ -66,7 +66,7 @@ public class Visit {
         return quanty;
     }
     //calcula el total de adultos
-    private int adultsQuanty(){
+    private int calculateAdultsQuanty(){
         int quanty=0;
         for (int i=0;i<visitors.size();i++){
             if(visitors.get(i).isAnAdult()){
@@ -75,8 +75,17 @@ public class Visit {
         }
         return quanty;
     }
+    public void showVisitors(){
+        int i =1;
+        for ( Visitor visitor : visitors){
+            System.out.println(visitor.showVisitor());
+            i++;
+        }
+    }
     public void showVisit (){
-        System.out.println("Guía: "+getGuide()+"\nVisitantes: "+getVisitors()+"\n Total cost: "+getTotalCost()+
-                "\n Cantidad de niños: "+getKidsQuanty()+"\nCantidad adultos :"+getAdultsQuanty()+"\nFecha de visita: "+getVisitDate());
+        System.out.println("Guía: "+getGuide().showGuide()+"\nVisitantes: ");
+        showVisitors();
+        System.out.println("\n Total cost: "+getTotalCost()+
+                "\n Cantidad de niños: "+getKidsQuanty()+"\nCantidad adultos :"+getAdultsQuanty()+"\nFecha de visita: "+getVisitDate().showDate());
     }
 }

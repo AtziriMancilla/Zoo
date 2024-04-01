@@ -289,15 +289,15 @@ public class Zoo{
         Scanner sc = new Scanner(System.in);
         System.out.println("Seleccionaste añadir cuidado/mantenimiento \n" +
                 "Selecciona el número de empleado a cargo");
-        showMaintenances();
-        int employeeSelected = sc.nextInt();
-        employeeSelected--;
-         Maintenance staff = maintenances.get(employeeSelected);
+            showMaintenances();
+            int employeeSelected = sc.nextInt();
+            employeeSelected--;
+            Maintenance staff = maintenances.get(employeeSelected);
          //empleado es el staff
-        System.out.println("Ingrese proceso realizado:");
-        sc.nextLine();
-        String processRealized = sc.nextLine();
-        System.out.println("Selecciona el número de animal al que realizarás cuidado");
+            System.out.println("Ingrese proceso realizado:");
+             sc.nextLine();
+             String processRealized = sc.nextLine();
+             System.out.println("Selecciona el número de animal al que realizarás cuidado");
         showAnimals();
         int animalselected = sc.nextInt();
         animalselected--;
@@ -471,8 +471,9 @@ public class Zoo{
         } else {
             int i=1;
             for (Visit visit : visits) {
-                System.out.print(i+" ");visit.showVisit();
+                System.out.print("Visita: "+i+" ");visit.showVisit();
                 i++;
+                System.out.println(".....................................");
             }
         }
     }
@@ -482,10 +483,12 @@ public class Zoo{
             System.out.println("No hay registros");
         }
         else {
+            System.out.println(">>>Lista de Cuidados<<<");
+            int i =1;
             for (Care care : cares) {
-                System.out.println(">>>Lista de Cuidados<<<");
-                care.showCare();
 
+                System.out.print(i+")");care.showCare();
+                i++;
             }
         }
     }
@@ -538,6 +541,8 @@ public class Zoo{
         visit2.addVisitor(visitor4);
         visit2.addVisitor(visitor5);
         visit2.addVisitor(visitor6);
+        visits.add(visit1);
+        visits.add(visit2);
         Date hireDate = new Date(2, 2, 2020);
 
         Vet vet1 = new Vet("Eduardo", "Martinez",birthDateEd,"MARE8976625LKJ", "JDHSGHKL1625", 2000, hireDate, "L-V 8-4");
@@ -571,7 +576,13 @@ public class Zoo{
         animals.add(animal8);
         animals.add(animal9);
         animals.add(animal10);
-        //cuidados ya está?
+        //crear  mantenimientos
+        Date processDate = new Date(31, 3, 2024);
+        Care care1 = new Care(maintenance1,"Alimentar", 0, processDate, "comió poquito :(" );
+        Care care2 = new Care(maintenance2, "Curacion", 4, processDate, "Mejora significativa en sus heridas");
+        cares.add(care1);
+        cares.add(care2);
+
     }
     public void modifyEmployee(){
         Scanner sc=new Scanner(System.in);

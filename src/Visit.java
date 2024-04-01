@@ -40,7 +40,7 @@ public class Visit {
             System.out.println("Este visitante ya fue registrado");
         }
         else {
-            visitor.setTotalVisits(visitor.getTotalVisits() + 1);
+            visitor.addVisit();
             visitors.add(visitor);
         }
     }

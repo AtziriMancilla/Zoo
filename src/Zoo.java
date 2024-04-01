@@ -538,6 +538,7 @@ public class Zoo{
         visit1.addVisitor(visitor2);
         visit1.addVisitor(visitor3);
         Visit visit2= new Visit(guide1,visitDate);
+        visit2.addVisitor(visitor1);
         visit2.addVisitor(visitor4);
         visit2.addVisitor(visitor5);
         visit2.addVisitor(visitor6);

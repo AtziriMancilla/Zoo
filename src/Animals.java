@@ -5,8 +5,8 @@ public class Animals {
     //Andy: Quiero hacer mejor un id que empiece en 0 para que no haya problema con la verificación
     private static int cantAnimal=0;
     int id;
-    private String type;
-    private Date arrivalDate;
+    private final String type;
+    private final Date arrivalDate;
     private ArrayList<String> listDiseases = new ArrayList<>();
     private String diet;
     private Date birthDate;
@@ -81,8 +81,8 @@ public class Animals {
         isVaccinated = vaccinated;
     }
     public String showAnimal(){
-        String aDate= Integer.toString(arrivalDate.getDayOfMonth())+"/" +Integer.toString(arrivalDate.getMonth())+"/"+Integer.toString(arrivalDate.getYear());
-        String bDate= Integer.toString(birthDate.getDayOfMonth())+"/" +Integer.toString(birthDate.getMonth())+"/"+Integer.toString(birthDate.getYear());
+        String aDate= arrivalDate.getDayOfMonth() +"/" + arrivalDate.getMonth() +"/"+ arrivalDate.getYear();
+        String bDate= birthDate.getDayOfMonth() +"/" + birthDate.getMonth() +"/"+ birthDate.getYear();
         return String.format("ID: %d|| type: %s|| Fecha de llegada: %s|| diet: %s|| Fecha nacimiento: %s|| Peso: %f|| Frecuencia de alimentacion: %d|| Esta vacunado: %b", id, type, aDate,diet, bDate,weight,feedingFrequency,isVaccinated);
     }
 }

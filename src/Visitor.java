@@ -6,7 +6,6 @@ public class Visitor extends Person{
     Scanner sc = new Scanner(System.in);
     public Visitor(String name, String lastname, Date birthDate, String curp, Date registerDate){
         super (name, lastname, birthDate, curp);
-        this.totalVisits = 0;
         this.registerDate = registerDate;
     }
     //Setters no le puse porque se supone que fecha de registro ni visitas se pueden modificar
@@ -16,6 +15,9 @@ public class Visitor extends Person{
 
     public Date getRegisterDate() {
         return registerDate;
+    }
+    public void addVisit(){
+        this.totalVisits+=1;
     }
 
 

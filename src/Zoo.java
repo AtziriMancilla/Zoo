@@ -327,12 +327,13 @@ public class Zoo{
         int opcion=sc.nextInt();
         System.out.println("Has seleccionado: "+ animals.get(opcion-1).showAnimal() );
 
-        System.out.println("¿Qué cambio desea realizar?\n1)Registrar Enfermedad\n 2) Actualizar peso\n" +
-                "3)Cambiar tipo de alimentación\n 4)Cambiar frecuencia de alimentación\n 5)Registrar vacunación\n 0) Atrás ");
+        System.out.println("¿Qué cambio desea realizar?\n1)Registrar Enfermedad\n2)Actualizar peso\n" +
+                "3)Cambiar tipo de alimentación\n4)Cambiar frecuencia de alimentación\n5)Registrar vacunación\n0) Atrás ");
          int option = sc.nextInt();
         switch (option){
             case 1 -> {
                 System.out.println("Ingrese enfermedad: ");
+                sc.nextLine();
                 String newDiesease = sc.nextLine();
                 animals.get(opcion-1).addDisease(newDiesease);
                 System.out.println("Enfermedad agregada");
@@ -341,10 +342,11 @@ public class Zoo{
                 System.out.println("Ingrese nuevo peso (Kg): ");
                 double newWeight = sc.nextDouble();
                 animals.get(opcion-1).setWeight(newWeight);
-                System.out.println("El nuevo peso de "+animals.get(opcion-1).getType()+" "+animals.get(opcion-1).getId()+ "es: "+animals.get(opcion-1).getWeight()+ "Kg");
+                System.out.println("El nuevo peso de "+animals.get(opcion-1).getType()+" ||ID: "+animals.get(opcion-1).getId()+ " es: "+animals.get(opcion-1).getWeight()+ "Kg");
             }
             case 3 ->{
                 System.out.println("Ingrese nueva dieta: ");
+                sc.nextLine();
                 String newDiet = sc.nextLine();
                 animals.get(opcion-1).setDiet(newDiet);
                 System.out.println("Dieta actualizada");
@@ -361,8 +363,10 @@ public class Zoo{
                 System.out.println("¿Tiene todas sus vacunas?\n 1)Si 2) No");
                 int desition = sc.nextInt();
                         if (desition==1){animals.get(opcion-1).setVaccinated(true);
+                            System.out.println("Ahora "+animals.get(opcion-1).getType()+" ||ID: "+animals.get(opcion-1).getId()+ " está vacunado");
                         }
                             else if (desition==2) {animals.get(opcion-1).setVaccinated(false);
+                            System.out.println("Se ha actualizado que "+animals.get(opcion-1).getType()+" ||ID: "+animals.get(opcion-1).getId()+ " requiere vacunas");
                             }
                              else {
                                 System.out.println("Entrada no válida");

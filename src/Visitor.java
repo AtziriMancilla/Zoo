@@ -14,16 +14,20 @@ public class Visitor extends Person{
         return totalVisits;
     }
 
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
     public void setTotalVisits(int totalVisits) {
         this.totalVisits = totalVisits;
     }
     public String showVisitor (){
-        return super.showInfo()+" Total visits: "+totalVisits+" Register date: "+registerDate;
+        return super.showInfo()+" Total visits: "+getTotalVisits()+" Register date: "+getRegisterDate().showDate();
 
     }
     //permite que el usuario modifique los atributos de un visitante
     public void modify(){
-        System.out.println("¿Qué aspecto desea modificar? \n1)Nombre \n2) Apellido\n 3)Fecha de Nacimiento\n 4)CURP");
+        System.out.println("¿Qué aspecto desea modificar? \n1)Nombre \n2)Apellido\n3)Fecha de Nacimiento\n4)CURP");
         int selection = sc.nextInt();
         sc.nextLine();
         switch (selection){

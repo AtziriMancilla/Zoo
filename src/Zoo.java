@@ -382,7 +382,7 @@ public class Zoo{
     //Borrar empleados
     public void deleteEmployee(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("¿Qué tipo de empleado desea eliminar? \n1. Guia\n2. Veterinario\n3. Mantenimiento\n4. Administracion\n 0. Salir");
+        System.out.println("¿Qué tipo de empleado desea eliminar? \n1. Guia\n2. Veterinario\n3. Mantenimiento\n4. Administracion\n0. Salir");
         int selection = sc.nextInt();
         switch (selection){
             case 1->{//mostrar guias
@@ -429,18 +429,26 @@ public class Zoo{
     }
     public void deleteAnimal(){
         Scanner sc = new Scanner(System.in);
-        int x = 1;
+        int i = 1;
         System.out.println("Selecciona el animal a eliminar:");
         for(Animals animal:animals){
-            System.out.printf("\n%d) Animal: %s",x,animal.getType());
-            x += 1;
+            System.out.println(i+") "+animal.showAnimal());
+            i += 1;
         }
-        System.out.print("\nRespuesta: ");
-        int res = sc.nextInt();
+
+        int selection = sc.nextInt();
+        selection -= 1;
+        System.out.println("Seleccionaste: "+ animals.get(selection).showAnimal());
+        System.out.println("¿Estás seguro de que lo quieres eliminar?\n 1)Si 2)Cancelar");
         sc.nextLine();
-        res -= 1;
-        animals.remove(res);
-        System.out.println("Animal eliminado de la base de datos.");
+        int confirmation= sc.nextInt();
+        if (confirmation==1) {
+            animals.remove(selection);
+            System.out.println("Animal eliminado de la base de datos.");
+        }
+        else {
+            System.out.println("Se canceló su eliminación");
+        }
     }
     //eliminar visitante
     public void deleteVisitor(){

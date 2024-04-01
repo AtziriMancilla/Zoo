@@ -567,26 +567,27 @@ public class Zoo{
         int opcion = sc.nextInt();
         switch (opcion) {
             case 1:
-                showGuides();
                 System.out.println("seleccione el numero: ");
+                showGuides();
+
                 opcion=sc.nextInt();
                 guides.get(opcion-1).modify();
                 break;
             case 2:
-                showVets();
                 System.out.println("seleccione el numero: ");
+                showVets();
                 opcion=sc.nextInt();
                 vets.get(opcion-1).modify();
                 break;
             case 3:
-                showMaintenances();
                 System.out.println("seleccione el numero: ");
+                showMaintenances();
                 opcion=sc.nextInt();
                 maintenances.get(opcion-1).modify();
                 break;
             case 4:
-                showManagements();
                 System.out.println("seleccione el numero: ");
+                showManagements();
                 opcion=sc.nextInt();
                 managements.get(opcion-1).modify();
                 break;

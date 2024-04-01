@@ -33,7 +33,7 @@ public class Employee extends Person{
     }
     public void modify(){
         Scanner sc=new Scanner(System.in);
-        System.out.println("¿Qué aspecto desea modificar? \n1)Nombre \n2) Apellido\n 3)Fecha de Nacimiento\n 4)CURP\n5) RFC\n6)Salario\n 7)Horario");
+        System.out.println("¿Qué aspecto desea modificar? \n1) Nombre \n2) Apellido \n3) Fecha de Nacimiento \n4) CURP \n5) RFC\n6) Salario\n7) Horario");
         int selection = sc.nextInt();
         sc.nextLine();
         switch (selection){

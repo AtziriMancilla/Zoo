@@ -65,11 +65,11 @@ public class Zoo{
     // Crea una fecha de tipo date pidiendo datos al usuario, y verifica si es valida, en caso contrario regresa null
     public Date registerDate(){
         Scanner sc=new Scanner(System.in);
-        System.out.println("Dia: ");
+        System.out.println("Dia (1-31): ");
         int newDay = sc.nextInt();
-        System.out.println("Mes: ");
+        System.out.println("Mes(1-12): ");
         int newMonth = sc.nextInt();
-        System.out.println("Año: ");
+        System.out.println("Año(AAAA): ");
         int newYear = sc.nextInt();
         if(validateDate(newDay,newMonth,newYear)) {
             Date date = new Date(newDay, newMonth, newYear);
@@ -205,7 +205,7 @@ public class Zoo{
         int opcion = sc.nextInt();
         sc.nextLine();
         Guide guide = guides.get(opcion-1);
-        System.out.println("Ingresa la fecha");
+        System.out.println("Ingresa la fecha de visita");
         Date date=registerDate();
         if(date==null)
             System.out.println("Error. La fecha ingresada no es válida.\n");
@@ -282,6 +282,7 @@ public class Zoo{
              //crear objeto y añadirlo a la lista
         Animals newAnimal = new Animals(typeAnimal, arrivalDate, diet, birthDate,weight,feedingFrequency,isVaccinated );
         animals.add(newAnimal);
+        System.out.println("Animal registrado en sistema");
     }
     //Añade los cuidados realizados
     public void addCare(){
@@ -293,9 +294,10 @@ public class Zoo{
         employeeSelected--;
          Maintenance staff = maintenances.get(employeeSelected);
          //empleado es el staff
-        System.out.println("Ingrese proceso realizado");
+        System.out.println("Ingrese proceso realizado:");
+        sc.nextLine();
         String processRealized = sc.nextLine();
-        System.out.println("Selecciona el animal al que realizarás cuidado");
+        System.out.println("Selecciona el número de animal al que realizarás cuidado");
         showAnimals();
         int animalselected = sc.nextInt();
         animalselected--;
@@ -308,11 +310,12 @@ public class Zoo{
             System.out.println("Fecha no válida");
             return;
         }
-        System.out.println("Observaciones (opcional)");
+        System.out.println("Observaciones (opcional): ");
+        sc.nextLine();
         String observations = sc.nextLine();
         ///////////Crear obejto
         Care newCare = new Care(staff, processRealized, idAnimal, processDate, observations);
-
+        System.out.println("Cuidado registrado, gracias por cuidar tqm");
 
     }
     //modificar registrodelAnimal

@@ -19,8 +19,16 @@ public class Employee extends Person{
         this.salary = salary;
     }
 
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
     public String showEmployee (){
-        return super.showInfo()+" RFC: "+rfc+" Salary: $"+salary+" Position: "+rol+" Fecha de contratación: "+hireDate+"Horario: "+schedule; //esta llamando el metodo de clase padre y le concatena los atributos de esta clase
+        return super.showInfo()+"|| RFC: "+rfc+" || Salary: $"+salary+"||Position: "+rol+" || Fecha de contratación: "+hireDate.showDate()+"||Horario: "+schedule; //esta llamando el metodo de clase padre y le concatena los atributos de esta clase
 
     }
     public void modify(){
@@ -51,14 +59,18 @@ public class Employee extends Person{
             case 5 -> {
                 System.out.println("Ingrese el RFC:");
                 rfc = sc.nextLine();
+                setRfc(rfc);
+
             }
             case 6 -> {
                 System.out.println("Ingrese el salario:");
                 salary = sc.nextDouble();
+                setSalary(salary);
             }
             case 7 ->{
                 System.out.println("Ingrese nuevo horario:");
                 schedule = sc.nextLine();
+                setSchedule(schedule);
             }
             default-> System.out.println("Opción no válida");
 

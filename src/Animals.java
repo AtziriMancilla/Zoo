@@ -83,6 +83,6 @@ public class Animals {
     public String showAnimal(){
         String aDate= Integer.toString(arrivalDate.getDayOfMonth())+"/" +Integer.toString(arrivalDate.getMonth())+"/"+Integer.toString(arrivalDate.getYear());
         String bDate= Integer.toString(birthDate.getDayOfMonth())+"/" +Integer.toString(birthDate.getMonth())+"/"+Integer.toString(birthDate.getYear());
-        return String.format("ID: %d, Fecha de llegada: %s, diet: %s, Fecha nacimiento: %s, Peso: %f, Frecuencia de alimentacion: %d,Esta vacunado: %b", id, aDate,diet, bDate,weight,feedingFrequency,isVaccinated);
+        return String.format("ID: %d|| type: %s|| Fecha de llegada: %s|| diet: %s|| Fecha nacimiento: %s|| Peso: %f|| Frecuencia de alimentacion: %d|| Esta vacunado: %b", id, type, aDate,diet, bDate,weight,feedingFrequency,isVaccinated);
     }
 }

@@ -224,7 +224,7 @@ public class Zoo{
                 if(opcion > visitors.size()){
                     System.out.println("Ingrese un numero de visitante valido");
                 }
-                if(opcion>0&&opcion<visitors.size()){
+                if(opcion>0&&opcion<=visitors.size()){
                     if (validateVisitors(visit,visitors.get(opcion - 1))) {
                         visit.addVisitor(visitors.get(opcion - 1));
                         System.out.println("Usuario agregado");

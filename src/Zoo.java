@@ -579,7 +579,7 @@ public class Zoo{
         animals.add(animal10);
         //crear  mantenimientos
         Date processDate = new Date(31, 3, 2024);
-        Care care1 = new Care(maintenance1,"Alimentar", 0, processDate, "comió poquito :(" );
+        Care care1 = new Care(maintenance1,"Alimentar", 1, processDate, "comió poquito :(" );
         Care care2 = new Care(maintenance2, "Curacion", 4, processDate, "Mejora significativa en sus heridas");
         cares.add(care1);
         cares.add(care2);
